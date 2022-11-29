@@ -1,0 +1,54 @@
+NAPOMENE
+
+1. Obavezno upisati ime, prezime i broj indeksa u komentar na početku y fajla.
+2. Rešenje koje ne može da se kompajlira nosi 0 poena.
+3. Za vreme testa nema pauze. Izlazak iz učionice se smatra završetkom testa.
+4. Asistenti za vreme testa daju informacije vezane isključivo za razumevanje
+   teksta zadatka.
+5. Test se snima kamerama.
+6. Test traje 80 minuta.
+7. Urađen zadatak ostaviti u svom home direktorijumu.
+
+
+ZADATAK
+
+Proširiti miniC gramatiku for iskazom koji ima sledeći oblik:
+
+    "match" id <number_arop> 
+     	{
+         <const> "=>" <statement> 
+        [<const> "=>" <statement>
+                 ...             ]
+    	"_" "=>" break_me;
+	 };
+
+gde je:
+id - var ili par
+<number_arop>   - "positive" ili "negative"
+<const>  - konstante
+<statement> - statement
+<const> "=>" <statement> - moze da bude jedna ili vise
+
+Realizovati sledeće semantičke provere:
+1) id mora biti prethodno deklarisana promenljiva ili parametar
+2) tipovi <const> moraju biti isti kao tip id
+3) <const> vrednosti moraju odgovarati <number_arop> iskazu, odnosno ako je "positive" 
+konstanta mora da bude >= 0 
+
+Primer:
+int main(int a){
+
+ match a positive{
+   11 => a=3; 
+   42 => a=a-2;
+   _ => break_me;
+  };
+}
+
+int main(int a){
+
+ match a negative{
+   -67 => return a;
+   _ => break_me;
+  };
+}
